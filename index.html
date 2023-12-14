@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAIAR Installer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>DAIAR Installer and Auto Ricer</h1>
+    </header>
+
+    <section class="installation">
+        <h2>Installation:</h2>
+        <pre>
+            <code>
+pacman -Sy git archlinux-keyring
+git clone --depth 1 https://github.com/demonkingswarn/archinstall
+cd archinstall && ./install.sh
+            </code>
+        </pre>
+        <p>That's it.</p>
+    </section>
+
+    <section class="about">
+        <h2>What is DAIAR?</h2>
+        <p>DAIAR is a script that autoinstalls and autoconfigures a fully-functioning and minimal Arch Linux environment.</p>
+        <p>DAIAR can be run on a fresh install of Arch Linux, providing you with a fully configured diving-board for work or more customizations.</p>
+    </section>
+
+    <section class="customization">
+        <h2>Customization</h2>
+        <p>DAIAR uses the programs <a href="https://github.com/DemonKingSwarn/archinstall/raw/master/pkgs.txt">here in pkgs.txt</a> and installs <a href="https://github.com/demonkingswarn/dotfiles">my dotfiles repo here</a>, but you can easily modify it by editing the script.</p>
+    </section>
+
+    
+<section class="formatting-guide">
+    <h2>Formatting a Disk Guide</h2>
+    <p>Follow these steps to format a disk:</p>
+    <pre>
+        <code>
+# List available block devices
+lsblk
+
+# Assume the disk is named 'sda'
+fdisk /dev/sda
+
+# Press 'm' for help
+m
+
+# Create a new GPT partition table
+g
+
+# Create the first partition (550MB)
+n
+<enter>
+<enter>
+<enter>
++550M
+
+# Create the second partition (2GB)
+n
+<enter>
+<enter>
+<enter>
+<enter>
++2G
+
+# Set the first partition type to EFI System
+t
+1
+1
+
+# Set the second partition type to Linux Swap
+t
+2
+19
+
+# Write changes and exit
+w
+        </code>
+    </pre>
+</section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
